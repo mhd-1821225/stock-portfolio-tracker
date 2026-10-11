@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Portfolio Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container container-sm" style="text-align: center;">
+        <h1>Stock Portfolio Tracker</h1>
+        <p>Track your stocks, real-time prices, and overall portfolio growth.</p>
+
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+            <a href="/login"><button type="button">Login</button></a>
+            <a href="/create-account"><button type="button" class="btn-secondary">Create Account</button></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Funds</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container container-sm">
+        <!-- Navigation / Action Bar -->
+        <div class="nav-actions">
+            <a href="/main" class="btn-secondary">← Back to Dashboard</a>
+        </div>
+
+        <!-- Alert Notification -->
+        {% if message %}
+            <div class="alert-message">{{ message }}</div>
+        {% endif %}
+
+        <h1>Deposit Funds</h1>
+        <p>Enter the amount you wish to add to your account balance below.</p>
+
+        <!-- Deposit Form -->
+        <form method="post" action = "/deposit">
+            <div class="form-group">
+                <label for="amount">Deposit Amount ($)</label>
+                <input 
+                    type="number" 
+                    id="amount" 
+                    name="amount" 
+                    step="0.01" 
+                    min="0.01"
+                    placeholder="0.00" 
+                    required
+                    autofocus
+                >
+            </div>
+            <button type="submit">Confirm Deposit</button>
+        </form>
+    </div>
+</body>
+</html>

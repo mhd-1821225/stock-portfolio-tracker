@@ -1,0 +1,14 @@
+
+# Secret credentials
+db.env
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment-specific settings
+.DS_Store

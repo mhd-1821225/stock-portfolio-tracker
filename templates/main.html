@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Portfolio Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to your Stock Portfolio, {{ name }}</h1>
+        <p>Track your stocks, prices and portfolio.</p>
+
+        <div class="nav-actions">
+            <a href="/add"><button type="button">ADD STOCK</button></a>
+            <a href="/edit"><button type="button" class="btn-secondary">Edit Portfolio</button></a>
+            <a href="/delete"><button type="button" class="btn-danger">DELETE STOCK</button></a>
+            <button type="button" class="btn-secondary" id="logoutBtn">LOGOUT</button>
+            
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Name</th>
+                        <th>Purchase Price</th>
+                        <th>Shares</th>
+                        <th>Current Price</th>
+                        <th>Profit/Loss</th>
+                        
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in portfolio %}
+                    <tr>
+                        <td><strong>{{ stock[0] }}</strong></td>
+                        <td>{{ stock[1] }}</td>
+                        <td>{{ stock[2] }}</td>
+                        <td>{{ stock[3] }}</td>
+                        <td>{{ stock[4] }}</td>
+                        <td>{{ stock[5] }}</td>
+                        <td>{{ stock[6] }}</td>
+                        <td>{{ stock[7] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="label">Total Money Invested</div>
+                <div class="value">{{ total_money_invested }}</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Total Current Value</div>
+                <div class="value">{{ total_current_value }}</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Total Profit/Loss</div>
+                <div class="value">{{ total_profit_loss }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2>Confirm Logout</h2>
+            <p style="margin-top: 0.5rem; margin-bottom: 1.5rem;">Are you sure you want to log out of your session?</p>
+            <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+                <button type="button" class="btn-secondary" id="cancelLogout">Cancel</button>
+                <a href="/logout" style="text-decoration: none;">
+                    <button type="button" class="btn-danger">Confirm</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const logoutBtn = document.getElementById('logoutBtn');
+        const logoutModal = document.getElementById('logoutModal');
+        const cancelLogout = document.getElementById('cancelLogout');
+
+        logoutBtn.addEventListener('click', () => {
+            logoutModal.style.display = 'flex';
+        });
+
+        cancelLogout.addEventListener('click', () => {
+            logoutModal.style.display = 'none';
+        });
+
+        // Close modal if user clicks on the dark backdrop
+        window.addEventListener('click', (e) => {
+            if (e.target === logoutModal) {
+                logoutModal.style.display = 'none';
+            }
+        });
+    </script>
+
+
+
+</body>
+</html>

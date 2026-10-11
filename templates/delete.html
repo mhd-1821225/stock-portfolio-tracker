@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete your stocks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container container-sm">
+        <h1>Delete your stocks</h1>
+        <p>Remove a specific stock ticker from your active portfolio list.</p>
+
+        {% if message %}
+            <div class="alert-message">{{ message }}</div>
+        {% endif %}
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="ticker">Ticker:</label>
+                <input type="text" id="ticker" name="ticker" required>
+            </div>
+
+            <button type="submit" class="btn-danger">DELETE STOCK</button>
+        </form>
+
+        <div style="margin-top: 1.5rem; text-align: center;">
+            <a href="/main"><button type="button" class="btn-secondary">Back to Home</button></a>
+        </div>
+    </div>
+</body>
+</html>

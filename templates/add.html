@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Stock</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container container-sm">
+        <h1>Add Stock</h1>
+        <p>Add a new stock asset to your active portfolio.</p>
+
+        {% if message %}
+            <div class="alert-message">{{ message }}</div>
+        {% endif %}
+
+        <form method="post" action="/add">
+            <div class="form-group">
+                <label for="ticker">Ticker:</label>
+                <input type="text" id="ticker" name="ticker" required>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" required>
+            </div>
+
+            <div class="form-group">
+                <label for="purchase_price">Purchase Price:</label>
+                <input type="number" step="0.01" id="purchase_price" name="purchase_price" required>
+            </div>
+
+            <button type="submit">ADD STOCK</button>
+        </form>
+
+        <div style="margin-top: 1.5rem; text-align: center;">
+            <a href="/main"><button type="button" class="btn-secondary">Back to Home</button></a>
+        </div>
+    </div>
+</body>
+</html>
